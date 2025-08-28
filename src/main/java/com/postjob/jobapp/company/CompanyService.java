@@ -1,0 +1,15 @@
+package com.postjob.jobapp.company;
+
+import java.util.List;
+
+public interface CompanyService {
+
+    List<Company> getAllCompanies();
+
+    boolean updateCompany(Company updatedcompany , Long id );
+
+    void createCompany(Company company);
+
+
+
+}
