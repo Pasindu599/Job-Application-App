@@ -1,37 +1,31 @@
-package com.postjob.jobapp.job;
+package com.postjob.jobapp.review;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.postjob.jobapp.company.Company;
 import jakarta.persistence.*;
-//@Table(name = "job_table")
 
 @Entity
-public class Job {
+public class Review {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
-    private String minSalary;
-    private String maxSalary;
-    private String location;
+    private double rating;
 
+    @JsonIgnore
     @ManyToOne
     private Company company;
 
-    public Job(){
-
+    public Review() {
     }
 
-
-
-    public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
+    public Review(Long id, String title, String description, double rating) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.minSalary = minSalary;
-        this.maxSalary = maxSalary;
-        this.location = location;
+        this.rating = rating;
     }
 
     public Company getCompany() {
@@ -66,27 +60,11 @@ public class Job {
         this.description = description;
     }
 
-    public String getMinSalary() {
-        return minSalary;
+    public double getRating() {
+        return rating;
     }
 
-    public void setMinSalary(String minSalary) {
-        this.minSalary = minSalary;
-    }
-
-    public String getMaxSalary() {
-        return maxSalary;
-    }
-
-    public void setMaxSalary(String maxSalary) {
-        this.maxSalary = maxSalary;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }
